@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="../styles/reset.css">
+	<link rel="stylesheet" href="../styles/global.css">
+</head>
+<body>
+	<div id="article" style="position:relative;">
+		<style type="text/css">
+			/*校区统计样式*/
+			.group_statis_campus{
+				width:976px;
+				padding:9px 9px 135px 15px;
+				font-size:14px;
+				display:none;
+			}
+			.group_statis_campus .group_title{
+				margin-bottom:20px;
+				border-bottom:1px solid #ddd;
+				font-size:16px;
+				height:58px;
+				line-height:58px;
+			}
+			.group_statis_campus .msg{
+				border-radius:3px;
+				border:1px solid #ddd;
+			}
+			.group_statis_campus .msg .head{
+				height:40px;
+				line-height:40px;
+				font-size:14px;
+				background:#eee;
+			}
+			.group_statis_campus .msg .head span{
+				margin:0 10px 0 30px;
+			}
+			.group_statis_campus .msg .head input[type=text]{
+				margin-left:253px;
+			}
+			.group_statis_campus .msg .screen{
+				height:74px;
+				line-height:74px;
+				margin-left:358px;
+				font-size:14px;
+			}
+			.group_statis_campus .msg .screen input{
+				width:110px;
+				height:26px;
+				margin:0 9px 0 6px;
+			}
+			.group_statis_campus .msg .campus_table{
+				border:1px solid #ddd;
+				width:946px;
+				margin:0 0 156px 10px;
+			}
+			.group_statis_campus .msg .campus_table tr{
+				height:42px;
+				border-bottom:1px solid #ddd;
+				text-align:center;
+			}
+			.group_statis_campus .msg .campus_table thead tr th{
+				height:46px;
+				font-weight:bold;
+			}
+			.group_statis_campus .msg .campus_table tbody tr:nth-child(odd){
+				background:#f9f9f9;
+			}
+			.group_statis_campus .msg .campus_table tbody tr a{
+				height:26px;
+				line-height:26px;
+				width:64px;
+				display:inline-block;
+				border-radius:3px;
+				background:#53aaf1;
+				border:1px solid #237ef1;
+				color:#fff;
+				
+			}
+			/*校区统计详情页样式*/
+			.group_statis_campus_details{
+				width:976px;
+				padding:9px 9px 135px 15px;
+				font-size:14px;
+			}
+			.group_statis_campus_details .msg .group_title{
+				margin-bottom:20px;
+				border-bottom:1px solid #ddd;
+				font-size:16px;
+				height:58px;
+				line-height:58px;
+			}
+			.group_statis_campus_details .msg .details_common{
+				border-radius:3px;
+				border:1px solid #ddd;
+			}
+			.group_statis_campus_details .msg .details_common .head1{
+				height:40px;
+				line-height:40px;
+				background:#eee;
+			}
+			.group_statis_campus_details .msg .details_common .head1 p{
+				margin-left:40px;
+			}
+			.group_statis_campus_details .msg .details_common .con1{
+				height:129px;
+				margin-left:73px;
+			}
+			.group_statis_campus_details .msg .details_common .con1 .line{
+				height:64px;
+				line-height:64px;
+			}
+			.group_statis_campus_details .msg .details_common .con1 input{
+				margin:0 141px 0 25px;
+				width:200px;
+			}
+			.group_statis_campus_details .msg .details_common .head2{
+				height:44px;
+				line-height:44px;
+				background:#eee;
+			}
+			.group_statis_campus_details .msg .details_common .head2 p{
+				margin-left:42px;
+			}
+			.group_statis_campus_details .msg .details_common .table2{
+				width:948px;
+				margin:20px 11px 24px 7px;
+				border:1px solid #dcdcdc;
+			}
+			.group_statis_campus_details .msg .details_common .table2 tr{
+				border-bottom:1px solid #ddd;
+			}
+			.group_statis_campus_details .msg .details_common .table2 th{
+				height:47px;
+				text-align:center;
+			}
+			.group_statis_campus_details .msg .details_common .table2 tbody tr:nth-child(odd){
+				background:#eee;
+			}
+			.group_statis_campus_details .msg .details_common .table2 td{
+				height:44px;
+				text-align:center;
+			}
+			.group_statis_campus_details .select_box{
+				height:89px;
+				vertical-align: middle;
+				margin-left:40px;
+			}
+			.group_statis_campus_details .select_box a{
+				text-decoration: none;
+				display:inline-block;
+				width:95px;
+				height:24px;
+				border-radius:3px;
+				border:1px solid #dcdcdc;
+				margin-right:15px;
+				text-align:center;
+				margin-top:31px;
+				padding-top:2px;
+			}
+			.group_statis_campus_details .select_box .active{
+				color:#fff;
+				background:#56a9f7;
+				border:1px solid #1e7eef;
+			}
+			/*校区统计详情页收益统计*/
+			.profit_con .profit_chart{
+				width:968px;
+			}
+			.profit_con .head{
+				height:40px;
+				line-height:40px;
+				font-size:14px;
+				background:#eee;
+			}
+			
+			.profit_con .profit_chart{
+				width:969px;
+				height:440px;
+				border:1px solid #ddd;
+				border-radius:3px;
+				margin-bottom:33px;
+			}
+			.profit_con .profit_chart .head span{
+				display:inline-block;
+				margin-left:21px;
+				line-height:40px;
+				height:40px;
+				font-size:14px;
+			}
+			.profit_con .profit_chart .head input{
+				width:140px;
+				height:28px;
+			}
+			.profit_con .profit_chart .head a{
+				color:#000;
+				text-decoration:none;
+				text-align:center;
+				display:inline-block;
+				width:47px;
+				height:28px;
+				line-height:28px;
+				vertical-align: middle;
+			}
+			.profit_con .profit_chart .head .active{
+				color:#fff;
+				background:#56a9f6;
+				width:47px;
+				height:28px;
+				border:1px solid #1b7ef4;
+				border-radius: 3px;
+			}
+			
+			.profit_con .profit_table{
+				width:969px;
+				height:auto;
+				border:1px solid #ddd;
+				border-radius:3px;
+			}
+			.profit_con .profit_table .head span{
+				display:inline-block;
+				margin-left:21px;
+				line-height:40px;
+				height:40px;
+				font-size:14px;
+			}
+			.profit_con .profit_table .table1{
+				margin:20px 10px 50px 10px;
+				border:1px solid #ddd;
+				width:946px;
+				height:354px;
+			}
+			.profit_con .profit_table .table1 tr:nth-child(odd){
+				background:#f9f9f9;
+			}
+			.profit_con .profit_table .table1 th{
+				border-bottom:1px solid #ddd;
+				height:47px;
+				text-align: center;
+			}
+			.profit_con .profit_table .table1 th:nth-child(1){
+				width:280px;
+			}
+			.profit_con .profit_table .table1 td{
+				border-bottom:1px solid #ddd;
+				height:42px;
+				text-align: center;
+			}
+			/*校区统计详情页学员统计*/
+			.student_con .head{
+				height:40px;
+				line-height:40px;
+				font-size:14px;
+				background:#eee;
+			}
+			
+			.student_con .student_chart{
+				width:966px;
+				height:362px;
+				border-radius:3px;
+				overflow:hidden;
+				margin-bottom:10px;
+			}
+			.student_con .student_chart .chart{
+				border:1px solid red;
+				height:320px;
+			}
+			.group_box .student_con .head span{
+				display:inline-block;
+				margin-left:21px;
+				line-height:40px;
+				height:40px;
+				font-size:14px;
+			}
+			.student_chart .head input{
+				width:140px;
+				height:28px;
+			}
+			.student_chart .head a{
+				color:#000;
+				text-decoration:none;
+				text-align:center;
+				display:inline-block;
+				width:47px;
+				height:28px;
+				line-height:28px;
+				vertical-align: middle;
+			}
+			.student_chart .head .active{
+				color:#fff;
+				background:#56a9f6;
+				width:47px;
+				height:28px;
+				border:1px solid #1b7ef4;
+				border-radius: 3px;
+			}
+			
+			.student_con .student_table{
+				border-radius:3px;
+				width:966px;
+				border:1px solid #ddd;
+				margin-bottom:26px;
+			}
+			.student_table .head span{
+				display:inline-block;
+				margin-left:21px;
+				line-height:40px;
+				height:40px;
+				font-size:14px;
+			}
+			.student_con .student_table table{
+				margin:20px 0 39px 9px;
+				border:1px solid #ddd;
+				width:949px;
+			}
+			/*校区统计详情页课程统计*/
+			.course_con .head{
+				height:40px;
+				line-height:40px;
+				font-size:14px;
+				background:#eee;
+			}
+			
+			.course_con .course_chart{
+				width:966px;
+				height:408px;
+				border-radius:3px;
+				overflow:hidden;
+				margin-bottom:30px;
+				border:1px solid #ddd;
+			}
+			.course_con .course_chart .chart{
+				border:1px solid red;
+				height:358px;
+			}
+			.group_box .course_con .head span{
+				display:inline-block;
+				margin-left:21px;
+				line-height:40px;
+				height:40px;
+				font-size:14px;
+			}
+			.course_chart .head input{
+				width:140px;
+				height:28px;
+			}
+			.course_chart .head a{
+				color:#000;
+				text-decoration:none;
+				text-align:center;
+				display:inline-block;
+				width:47px;
+				height:28px;
+				line-height:28px;
+				vertical-align: middle;
+			}
+			.course_chart .head .active{
+				color:#fff;
+				background:#56a9f6;
+				width:47px;
+				height:28px;
+				border:1px solid #1b7ef4;
+				border-radius: 3px;
+			}
+			
+			.course_con .course_table{
+				border-radius:3px;
+				width:966px;
+				border:1px solid #ddd;
+				margin-bottom:26px;
+			}
+			.course_table .head span{
+				display:inline-block;
+				margin-left:21px;
+				line-height:40px;
+				height:40px;
+				font-size:14px;
+			}
+			.course_con .course_table table{
+				margin:20px 0 39px 9px;
+				border:1px solid #ddd;
+				width:949px;
+			}
+			/*校区统计详情页解决方案*/
+		</style>
+		<!--校区统计页开始-->
+		<div class="group_statis_campus">
+			<p class="group_title">校区统计</p>
+			<div class="msg">
+				<div class="head">
+					<span>起始时间</span>
+					<input type="date" />
+					<span>截止时间</span>
+					<input type="date" />
+					<input type="text" />
+				</div>
+				<div class="screen">
+					<span>充值方式</span>
+					<input type="text" />
+					<span>在线商城</span>
+					<input type="text" />
+					<span>筛选条件</span>
+					<input type="text" />
+				</div>
+				<table class="campus_table">
+					<thead>
+						<tr>
+							<th>校区名称</th>
+							<th>充值方式</th>
+							<th>学员数(人)</th>
+							<th>课耗(节)</th>
+							<th>收入(元)</th>
+							<th>在线商城</th>
+							<th>创建时间</th>
+							<th>操作</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>火星校区</td>
+							<td>自主充值</td>
+							<td>100</td>
+							<td>100</td>
+							<td>1000</td>
+							<td>开放</td>
+							<td>2011-01-01 09:21</td>
+							<td><a href="javascript:;">查看详情</a></td>
+						</tr>
+						<tr>
+							<td>水星校区</td>
+							<td>集团充值</td>
+							<td>100</td>
+							<td>100</td>
+							<td>1000</td>
+							<td>关闭</td>
+							<td>2016-09-12 12:00</td>
+							<td><a href="javascript:;">查看详情</a></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<!--校区统计页结束-->
+		<!--校区详情页面开始-->
+		<div class="group_statis_campus_details">
+			<div class="msg">
+				<p class="group_title">校区统计&gt;&gt;校区详情</p>
+				<div class="details_common">
+					<div class="head1">
+						<p>校区信息</p>
+					</div>
+					<div class="con1">
+						<div class="line">
+							<span>分校名称</span>
+							<input type="text" />
+							<span>分校地址</span>
+							<input type="text" />
+						</div>
+						<div class="line">
+							<span>手机号码</span>
+							<input type="text" />
+							<span>校区类型</span>
+							<input type="text" />
+						</div>
+					</div>
+					<div class="head2">
+						<p>校区管理员列表</p>
+					</div>
+					<table class="table2">
+						<thead>
+							<tr>
+								<th>负责人</th>
+								<th>手机号</th>
+								<th>账号状态</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>张三</td>
+								<td>13100009999</td>
+								<td>启用</td>
+							</tr>
+							<tr>
+								<td>李四</td>
+								<td>13199990000</td>
+								<td>禁用</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+			<div class="select_box">
+				<a class="active" href="javascript:;">收益统计</a>
+				<a href="javascript:;">学员统计</a>
+				<a href="javascript:;">课程统计</a>
+				<a href="javascript:;">解决方案</a>
+			</div>
+			<!--收益统计部分开始-->
+			<div class="group_statis_campus_profit group_statis_page">
+				<div class="profit_con">
+					<div class="profit_chart">
+						<div class="head">
+							<span>起始时间</span>
+							<input type="date" />
+							<span>截止时间</span>
+							<input type="date" />
+							<a class="active" href="javascript:;">周</a>
+							<a href="javascript:;">月</a>
+							<a href="javascript:;">年</a>
+						</div>
+						<div class="chart"></div>
+					</div>
+					<div class="profit_table">
+						<div class="head">
+							<span>收益记录</span>
+						</div>
+						<table class="table1">
+							<thead>
+								<tr>
+									<th>时间</th>
+									<th>购课学员数(人)</th>
+									<th>平均收益(元)</th>
+									<th>总额(元)</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>2016-03-01</td>
+									<td>5000</td>
+									<td>-</td>
+									<td>100</td>
+								</tr>
+								<tr>
+									<td>2016-03-01</td>
+									<td>5000</td>
+									<td>-</td>
+									<td>100</td>
+								</tr>
+								<tr>
+									<td>2016-03-01</td>
+									<td>5000</td>
+									<td>-</td>
+									<td>100</td>
+								</tr>
+								<tr>
+									<td>2016-03-01</td>
+									<td>5000</td>
+									<td>-</td>
+									<td>100</td>
+								</tr>
+								<tr>
+									<td>2016-03-01</td>
+									<td>5000</td>
+									<td>-</td>
+									<td>100</td>
+								</tr>
+								<tr>
+									<td>2016-03-01</td>
+									<td>5000</td>
+									<td>-</td>
+									<td>100</td>
+								</tr>
+								<tr>
+									<td>2016-03-01</td>
+									<td>5000</td>
+									<td>-</td>
+									<td>100</td>
+								</tr>
+							</tbody>	
+						</table>
+					</div>
+				</div>
+			</div>
+			<!--收益统计部分结束-->
+			<!--学员统计部分开始-->
+			<div class="group_statis_campus_student group_statis_page">
+				<div class="student_con">
+					<!--图表区域开始(两块)-->
+					<div class="student_chart">
+						<div class="head">
+							<span>起始时间</span>
+							<input type="date" />
+							<span>截止时间</span>
+							<input type="date" />
+						</div>
+						<div class="chart"></div>
+					</div>
+					<div class="student_chart">
+						<div class="head">
+							<span>起始时间</span>
+							<input type="date" />
+							<span>截止时间</span>
+							<input type="date" />
+							<a class="active" href="javascript:;">周</a>
+							<a href="javascript:;">月</a>
+							<a href="javascript:;">年</a>
+						</div>
+						<div class="chart"></div>
+					</div>
+					<!--图表区域结束(两块)-->
+					<!--表格区域开始(两块)-->
+					<div class="student_table">
+						<div class="head">
+							<span>学员活跃记录</span>
+						</div>
+						<table class="table1">
+							<thead>
+								<tr>
+									<th>日期</th>
+									<th>学员总人数</th>
+									<th>已开课学员人数</th>
+									<th>上课学员人数</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>2016-03-01</td>
+									<td>5000</td>
+									<td>5000</td>
+									<td>5000</td>
+								</tr>
+							</tbody>	
+						</table>
+					</div>
+					<div class="student_table">
+						<div class="head">
+							<span>增加学员记录</span>
+						</div>
+						<table class="table2">
+							<thead>
+								<tr>
+									<th>日期</th>
+									<th>增长学员总人数</th>
+									<th>在线注册增加人数</th>
+									<th>地推增加人数</th>
+									<th>学校推广增加人数</th>
+									<th>线下转化人数</th>
+									<th>口碑介绍增加人数</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>2016-03-01</td>
+									<td>5000</td>
+									<td>5000</td>
+									<td>100</td>
+									<td>100</td>
+									<td>100</td>
+									<td>100</td>
+								</tr>
+							</tbody>	
+						</table>
+					</div>
+					<!--表格区域结束(两块)-->
+				</div>
+			</div>
+			<!--学员统计部分结束-->
+			<!--课程统计部分开始-->
+			<div class="group_statis_campus_course group_statis_page">
+				<div class="course_con">
+					<!--图表区域开始(一块)-->
+					<div class="course_chart">
+						<div class="head">
+							<span>起始时间</span>
+							<input type="date" />
+							<span>截止时间</span>
+							<input type="date" />
+							<a class="active" href="javascript:;">周</a>
+							<a href="javascript:;">月</a>
+							<a href="javascript:;">年</a>
+						</div>
+						<div class="chart"></div>
+					</div>
+					<!--图表区域结束(一块)-->
+					<!--表格区域开始(一块)-->
+					<div class="course_table">
+						<div class="head">
+							<span>课程记录</span>
+						</div>
+						<table class="table1">
+							<thead>
+								<tr>
+									<th>课程名称</th>
+									<th>课程上课占比(%)</th>
+									<th>开课学员数(人)</th>
+									<th>上课学员数(人)</th>
+									<th>平均课耗(节)</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>英语自由约课</td>
+									<td>95.5</td>
+									<td>200</td>
+									<td>200</td>
+									<td>10</td>
+								</tr>
+							</tbody>	
+						</table>
+					</div>
+					<!--表格区域结束(一块)-->
+				</div>
+			</div>
+			<!--课程统计部分结束-->
+			<!--解决方案部分开始-->
+			<div class="group_statis_campus_slove group_statis_page">
+				
+			</div>
+			<!--解决方案部分结束-->
+		</div>
+		<!--校区详情页面结束-->
+		
+		<script type="text/javascript">
+			;(function(){
+				var oSelectBox = document.querySelector('.select_box');
+				var aSelectPageBtn = oSelectBox.children;
+				var aCampusStatisPage = document.querySelectorAll('.group_statis_page');
+				for(var i = 0;i<aSelectPageBtn.length;i++){
+					aSelectPageBtn[i].index = i;
+					aSelectPageBtn[i].onclick = function(){
+						for(var i = 0;i<aSelectPageBtn.length;i++){
+							aSelectPageBtn[i].className = '';
+							aCampusStatisPage[i].style.display = 'none';
+						}
+						this.className = 'active';
+						aCampusStatisPage[this.index].style.display = 'block';
+					};
+				}
+			})();
+		</script>
+	</div>
+</body>
+</html>

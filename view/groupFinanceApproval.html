@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="../styles/reset.css">
+	<link rel="stylesheet" href="../styles/global.css">
+</head>
+<body>
+	<div id="article" style="position:relative;">
+		<style type="text/css">
+			.group_finance_approval{
+				width:968px;
+				padding:9px 17px 135px 15px;
+			}
+			.group_finance_approval .group_box .group_title{
+				margin-bottom:20px;
+				border-bottom:1px solid #ddd;
+				font-size:16px;
+				height:58px;
+				line-height:58px;
+			}
+			
+			.approval_hint{
+				width:968px;
+				height:101px;
+				border-radius:3px;
+				border:1px solid #ddd;
+			}
+			.approval_hint .img_box{
+				height:101px;
+				line-height:101px;
+				width:84px;
+				text-align:center;
+				vertical-align: middle;
+				float:left;
+			}
+			.approval_hint .img_box img{
+				vertical-align: middle;
+			}
+			.approval_hint .text_box{
+				float:left;
+			}
+			.approval_hint .text_box .now{
+				font-size:16px;
+				height:28px;
+				line-height:28px;
+				margin-top:10px;
+			}
+			.approval_hint .text_box .now_money{
+				font-size:16px;
+				height:28px;
+				line-height:28px;
+				color:#d12710;
+			}
+			.approval_hint .text_box .desc{
+				font-size:14px;
+				height:28px;
+				line-height:28px;
+			}
+			.approval_hint .text_box .desc a{
+				display:inline-block;
+				margin-left:5px;
+				font-size:14px;
+				height:28px;
+				line-height:28px;
+				color:#71a6f6;
+			}
+			
+			.approval_con{
+				width:968px;
+				margin-top:15px;
+				border-radius:3px;
+				border:1px solid #ddd;
+			}
+			.approval_con .title{
+				height:40px;
+				background:#eee;
+			}
+			.approval_con .title p{
+				height:40px;
+				line-height:40px;
+				margin-left:20px;
+			}
+			
+			.approval_con .options{
+				height:58px;
+				line-height:58px;
+				width:946px;
+				border:1px solid #ddd;
+				margin: 20px 0 0 10px;
+			}
+			.approval_con .options .agree{
+				color:#70a5f5;
+				margin-left:14px;
+			}
+			.approval_con .options .refuse{
+				color:#d12612;
+				margin-left:16px;
+				margin-right:20px;
+			}
+			.approval_con .options .timedesc{
+				margin-left:20px;
+				margin-right:10px;
+			}
+			.approval_con .options .query{
+				margin-left:70px;
+			}
+			
+			.approval_con table{
+				width:946px;
+				margin-top:11px;
+				border:1px solid #ddd;
+				margin: 20px 0 62px 10px;
+				border-collapse:collapse;
+			}
+			.approval_con table tbody tr:nth-child(odd){
+				background:#f9f9f9;
+			}
+			.approval_con table th{
+				height:48px;
+				text-align:center;
+				border-bottom:1px solid #ddd;
+			}
+			.approval_con table td{
+				height:44px;
+				text-align:center;
+				border-bottom:1px solid #ddd;
+			}
+		</style>
+		<div class="group_finance_approval">
+			<div class="group_box">
+				<p class="group_title">审批中心</p>
+				<div class="approval_hint">
+					<div class="img_box">
+						<img src="../images/cnyIcon.png" alt="" />
+					</div>
+					<div class="text_box">
+						<p class="now">当前余额</p>
+						<p class="now_money">￥120,000</p>
+						<p class="desc">全部购课申请总金额为<span>144,500</span>,当前金额不足,请前往<a href="javascript:;">充值</a></p>
+					</div>
+				</div>
+				<div class="approval_con">
+					<div class="title">
+						<p>申请列表</p>
+					</div>
+					<div class="options">
+						<a class="agree" href="javascript:;">批量同意</a>
+						<a class="refuse" href="javascript:;">批量驳回</a>
+						<span>|</span>
+						<span class="timedesc">起始时间</span>
+						<input type="date" />
+						<span class="timedesc">截止时间</span>
+						<input type="date" />
+						<input class="query" type="text" />
+					</div>
+					<table>
+						<thead>
+							<tr>
+								<th><input type="checkbox" name="all"/></th>
+								<th>校区名称</th>
+								<th>申请类型</th>
+								<th>申请时间</th>
+								<th>金额(元)</th>
+								<th>申请人</th>
+								<th>备注</th>
+								<th>操作</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td><input type="checkbox" name="school"/></td>
+								<td>xxx校区</td>
+								<td>购课</td>
+								<td>2016-01-01 11:11</td>
+								<td>2000</td>
+								<td>张三</td>
+								<td><a href="javascript:;">查看</a></td>
+								<td>
+									<a href="javascript:;">同意</a>
+									<a href="javascript:;">驳回</a>
+								</td>
+							</tr>
+							<tr>
+								<td><input type="checkbox" name="school"/></td>
+								<td>xxx校区</td>
+								<td>退课</td>
+								<td>2016-01-01 11:11</td>
+								<td>2000</td>
+								<td>李四</td>
+								<td><a href="javascript:;">查看</a></td>
+								<td>
+									<a href="javascript:;">同意</a>
+									<a href="javascript:;">驳回</a>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+		<script type="text/javascript">
+			
+		</script>
+	</div>
+</body>
+</html>

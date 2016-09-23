@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="../styles/reset.css">
+	<link rel="stylesheet" href="../styles/global.css">
+</head>
+<body>
+	<div id="article" style="position:relative;">
+		<style type="text/css">
+			.group_finance_report{
+				width:968px;
+				padding:9px 17px 135px 15px;
+			}
+			.group_finance_report .group_box .group_title{
+				margin-bottom:20px;
+				border-bottom:1px solid #ddd;
+				font-size:16px;
+				height:58px;
+				line-height:58px;
+			}
+			
+			.report_choice{
+				width:968px;
+				height:56px;
+				text-align:center;
+			}
+			.report_choice .link1{
+				display:inline-block;
+				height:34px;
+				line-height:34px;
+				width:119px;
+				background:#56a9f7;
+				border:1px solid #0463d1;
+				color:#fff;
+				border-radius:4px 0 0 4px;
+			}
+			.report_choice .link2{
+				display:inline-block;
+				height:34px;
+				line-height:34px;
+				width:119px;
+				background:#56a9f7;
+				border:1px solid #0463d1;
+				color:#fff;
+				border-radius:0 4px 4px 0;
+			}
+			.report_choice .addactive{
+				background:#1b7ef5;
+			}
+			/*充值页样式*/
+			.report_recharge{
+				display:block;
+			}
+			.report_recharge .recharge_option{
+				border:1px solid #ddd;
+				width:968px;
+				border-radius:3px;
+				margin-bottom:15px;
+			}
+			.report_recharge .recharge_option .options{
+				height:58px;
+				line-height:58px;
+				border-bottom:1px dashed #dedede;
+			}
+			.report_recharge .recharge_option .options .optiondesc{
+				margin:0 10px 0 20px;
+			}
+			.report_recharge .recharge_option .options .query{
+				margin-left:40px;
+			}
+			.report_recharge .recharge_option .export{
+				height:58px;
+				line-height:58px;
+			}
+			.report_recharge .recharge_option .export a{
+				color:#6ea4fa;
+				margin-left:20px;
+			}
+			
+			.report_recharge .recharge_table{
+				border-radius:3px;
+				border:1px solid #ddd;
+			}
+			.report_recharge .recharge_table .title{
+				height:40px;
+				line-height:40px;
+				background:#eee;
+			}
+			.report_recharge .recharge_table .title p{
+				margin-left:19px;
+			}
+			.report_recharge .recharge_table table{
+				border:1px solid #ddd;
+				width:946px;
+				margin:20px 0 61px 10px;
+			}
+			.report_recharge .recharge_table table thead tr{
+				font-weight:bold;
+				font-size:14px;
+				height:47px;
+			}
+			.report_recharge .recharge_table table tbody tr:nth-child(odd){
+				background:#f9f9f9;
+			}
+			.report_recharge .recharge_table table tr{
+				border-bottom:1px solid #ddd;
+				height:42px;
+			}
+			.report_recharge .recharge_table table th{
+				text-align:center;
+			}
+			.report_recharge .recharge_table table td{
+				text-align:center;
+			}
+			/*审批页样式*/
+			.report_approval{
+				display:none;
+			}
+			.report_approval .approval_option{
+				border:1px solid #ddd;
+				width:968px;
+				border-radius:3px;
+				margin-bottom:15px;
+			}
+			.report_approval .approval_option .options{
+				height:58px;
+				line-height:58px;
+				border-bottom:1px dashed #dedede;
+			}
+			.report_approval .approval_option .options .optiondesc{
+				margin:0 10px 0 20px;
+			}
+			.report_approval .approval_option .options .query{
+				margin-left:40px;
+			}
+			.report_approval .approval_option .export{
+				height:58px;
+				line-height:58px;
+			}
+			.report_approval .approval_option .export a{
+				color:#6ea4fa;
+				margin-left:20px;
+			}
+			
+			.report_approval .approval_table{
+				border-radius:3px;
+				border:1px solid #ddd;
+			}
+			.report_approval .approval_table .title{
+				height:40px;
+				line-height:40px;
+				background:#eee;
+			}
+			.report_approval .approval_table .title p{
+				margin-left:19px;
+			}
+			.report_approval .approval_table table{
+				border:1px solid #ddd;
+				width:946px;
+				margin:20px 0 61px 10px;
+			}
+			.report_approval .approval_table table thead tr{
+				font-weight:bold;
+				font-size:14px;
+				height:47px;
+			}
+			.report_approval .approval_table table tbody tr:nth-child(odd){
+				background:#f9f9f9;
+			}
+			.report_approval .approval_table table tr{
+				border-bottom:1px solid #ddd;
+				height:42px;
+			}
+			.report_approval .approval_table table th{
+				text-align:center;
+			}
+			.report_approval .approval_table table td{
+				text-align:center;
+			}
+		</style>
+		<script type="text/javascript" language="javascript">
+		       
+    </script>
+		<div class="group_finance_report">
+			<div class="group_box">
+				<p class="group_title">财务报表</p>
+				<div class="report_choice">
+					<a id="rechargePageBtn" class="addactive link1" href="javascript:;">集团充值<!--去除默认间距-->
+					<a id="approvalPageBtn" class="link2" href="javascript:;">集团审批</a>
+				</div>
+				<!--充值显示区域开始-->
+				<div id="rechargePage" class="report_recharge">
+					<div class="recharge_option">
+						<div class="options">
+							<span class="optiondesc">起始时间</span>
+							<input type="date" />
+							<span class="optiondesc">截止时间</span>
+							<input type="date" />
+							<input class="query" type="text" />
+							<span class="optiondesc">支付方式</span>
+							<select name="">
+								<option value="全部">全部</option>
+							</select>
+						</div>
+						<div class="export">
+							<a id="exportRechargeTable" href="javascript:;" >导出报表</a>
+						</div>
+					</div>
+					<div class="recharge_table">
+						<div class="title">
+							<p>充值列表</p>
+						</div>
+						<table id="rechargeTable">
+							<thead>
+								<tr>
+									<th>充值金额(元)</th>
+									<th>充值人</th>
+									<th>充值时间</th>
+									<th>支付方式</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>10,000</td>
+									<td>奥特曼</td>
+									<td>2011-01-11 11:11</td>
+									<td>支付宝</td>
+								</tr>
+								<tr>
+									<td>10,000</td>
+									<td>奥特曼</td>
+									<td>2011-01-11 11:11</td>
+									<td>支付宝</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+				<!--充值显示区域结束-->
+				<!--审批显示区域开始-->
+				<div id="approvalPage" class="report_approval">
+					<div class="approval_option">
+						<div class="options">
+							<span class="optiondesc">起始时间</span>
+							<input type="date" />
+							<span class="optiondesc">截止时间</span>
+							<input type="date" />
+							<input class="query" type="text" />
+							<span class="optiondesc">状态</span>
+							<select name="">
+								<option value="全部">全部</option>
+							</select>
+						</div>
+						<div class="export">
+							<a href="javascript:;">导出报表</a>
+						</div>
+					</div>
+					<div class="approval_table">
+						<div class="title">
+							<p>审批</p>
+						</div>
+						<table>
+							<thead>
+								<tr>
+									<th>校区名称</th>
+									<th>申请时间</th>
+									<th>申请类型</th>
+									<th>状态</th>
+									<th>申请人</th>
+									<th>审批人</th>
+									<th>审批时间</th>
+									<th>金额(元)</th>
+									<th>备注</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>新东方英语顺义校区</td>
+									<td>2016-01-21 12:11</td>
+									<td>购课</td>
+									<td>通过</td>
+									<td>aaa</td>
+									<td>奥特曼</td>
+									<td>2011-01-11 11:11</td>
+									<td>111</td>
+									<td>查看</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+				<!--审批显示区域结束-->
+			</div>
+		</div>
+		<script type="text/javascript">
+			;(function(){
+				var oRechargePage = document.getElementById('rechargePage');//集团充值显示区域
+				var oApprovalPage = document.getElementById('approvalPage');//集团审批显示区域
+				var oRechargePageBtn = document.getElementById('rechargePageBtn');//集团充值按钮
+				var oApprovalPageBtn = document.getElementById('approvalPageBtn');//集团审批按钮
+				
+				var oExportTableBtn = document.getElementById('exportRechargeTable');//充值页导出报表按钮
+				var oExportTable = document.getElementById('RechargeTable');//充值页报表
+				oRechargePageBtn.onclick = function(){
+					removeClass(oApprovalPageBtn,'addactive');
+					addClass(oRechargePageBtn,'addactive');
+					oApprovalPage.style.display = 'none';
+					oRechargePage.style.display = 'block';
+				};
+				oApprovalPageBtn.onclick = function(){
+					removeClass(oRechargePageBtn,'addactive');
+					addClass(oApprovalPageBtn,'addactive');
+					oRechargePage.style.display = 'none';
+					oApprovalPage.style.display = 'block';
+				};
+				//充值页导出报表功能开始
+				
+		        var idTmr;
+		        function  getExplorer() {
+		            var explorer = window.navigator.userAgent ;
+		            //ie 
+		            if (explorer.indexOf("MSIE") >= 0) {
+		                return 'ie';
+		            }
+		            //firefox 
+		            else if (explorer.indexOf("Firefox") >= 0) {
+		                return 'Firefox';
+		            }
+		            //Chrome
+		            else if(explorer.indexOf("Chrome") >= 0){
+		                return 'Chrome';
+		            }
+		            //Opera
+		            else if(explorer.indexOf("Opera") >= 0){
+		                return 'Opera';
+		            }
+		            //Safari
+		            else if(explorer.indexOf("Safari") >= 0){
+		                return 'Safari';
+		            }
+		        }
+		        function method1(tableid) {//整个表格拷贝到EXCEL中
+		            if(getExplorer()=='ie')
+		            {
+		                var curTbl = document.getElementById(tableid);
+		                var oXL = new ActiveXObject("Excel.Application");
+		
+		                //创建AX对象excel 
+		                var oWB = oXL.Workbooks.Add();
+		                //获取workbook对象 
+		                var xlsheet = oWB.Worksheets(1);
+		                //激活当前sheet 
+		                var sel = document.body.createTextRange();
+		                sel.moveToElementText(curTbl);
+		                //把表格中的内容移到TextRange中 
+		                sel.select;
+		                //全选TextRange中内容 
+		                sel.execCommand("Copy");
+		                //复制TextRange中内容  
+		                xlsheet.Paste();
+		                //粘贴到活动的EXCEL中       
+		                oXL.Visible = true;
+		                //设置excel可见属性
+		
+		                try {
+		                    var fname = oXL.Application.GetSaveAsFilename("Excel.xls", "Excel Spreadsheets (*.xls), *.xls");
+		                } catch (e) {
+		                    print("Nested catch caught " + e);
+		                } finally {
+		                    oWB.SaveAs(fname);
+		
+		                    oWB.Close(savechanges = false);
+		                    //xls.visible = false;
+		                    oXL.Quit();
+		                    oXL = null;
+		                    //结束excel进程，退出完成
+		                    //window.setInterval("Cleanup();",1);
+		                    idTmr = window.setInterval("Cleanup();", 1);
+		
+		                }
+		
+		            }
+		            else
+		            {
+		                tableToExcel('rechargeTable')
+		            }
+		        }
+		        function Cleanup() {
+		            window.clearInterval(idTmr);
+		            CollectGarbage();
+		        }
+		        var tableToExcel = (function() {
+		              var uri = 'data:application/vnd.ms-excel;base64,',
+		              template = '<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:x="urn:schemas-microsoft-com:office:excel" xmlns="http://www.w3.org/TR/REC-html40"><head><!--[if gte mso 9]><xml><x:ExcelWorkbook><x:ExcelWorksheets><x:ExcelWorksheet><x:Name>{worksheet}</x:Name><x:WorksheetOptions><x:DisplayGridlines/></x:WorksheetOptions></x:ExcelWorksheet></x:ExcelWorksheets></x:ExcelWorkbook></xml><![endif]--></head><body><table>{table}</table></body></html>',
+		                base64 = function(s) { return window.btoa(unescape(encodeURIComponent(s))) },
+		                format = function(s, c) {
+		                    return s.replace(/{(\w+)}/g,
+		                    function(m, p) { return c[p]; }) }
+		                return function(table, name) {
+		                if (!table.nodeType) table = document.getElementById(table)
+		                var ctx = {worksheet: name || 'Worksheet', table: table.innerHTML}
+		                window.location.href = uri + base64(format(template, ctx))
+		              }
+		            })()
+				oExportTableBtn.onclick = function(){
+					method1('RechargeTable');
+				};
+				//导出表格结束
+				function hasClass(obj, sClass) {  
+				    return obj.className.match(new RegExp('(\\s|^)' + sClass + '(\\s|$)'));  
+				}  
+				function addClass(obj, sClass) {  
+				    if (!hasClass(obj, sClass)) obj.className += " " + sClass;  
+				}
+				function removeClass(obj, sClass) {  
+				    if (hasClass(obj, sClass)) {  
+				        var reg = new RegExp('(\\s|^)' + sClass + '(\\s|$)');  
+				        obj.className = obj.className.replace(reg, ' ');  
+				    }
+				}
+			})();
+		</script>
+	</div>
+</body>
+</html>

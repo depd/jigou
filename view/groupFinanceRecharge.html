@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="../styles/reset.css">
+	<link rel="stylesheet" href="../styles/global.css">
+</head>
+<body>
+	<div id="article" style="position:relative;">
+		<style type="text/css">
+			/*公共样式*/
+			.group_finance_recharge{
+				width:976px;
+				padding:9px 9px 135px 15px;
+			}
+			.group_finance_recharge .group_box .group_title{
+				margin-bottom:20px;
+				border-bottom:1px solid #ddd;
+				font-size:16px;
+				height:58px;
+				line-height:58px;
+			}
+			
+			/*打款样式*/
+			.group_finance_recharge .recharge_con .msg{
+				width:969px;
+				border-radius: 4px;
+				border:1px solid #ddd;
+			}
+			.msg .recharge_title{
+				height:18px;
+				line-height:18px;
+				font-size:14px;
+				margin:10px 0 12px 10px;
+			}
+			.msg .recharge_title img{
+				vertical-align: middle;
+				margin-right:10px;
+			}
+			.msg table{
+				margin:0 0 28px 324px;
+			}
+			.msg table tr td{
+				font-size:14px;
+				height:30px;
+				line-height:30px;
+			}
+			.msg table tr td:first-child{
+				text-align:right;
+			}
+			/*支付样式*/
+			.group_finance_recharge .recharge_con .pay{
+				width:969px;
+				border-radius: 4px;
+				border:1px solid #ddd;
+				margin-top:14px;
+				position:relative;
+			}
+			.pay .recharge_title{
+				height:18px;
+				line-height:18px;
+				font-size:14px;
+				margin:10px 0 12px 10px;
+			}
+			.pay .recharge_title img{
+				vertical-align: middle;
+				margin-right:10px;
+			}
+			.pay .warptable{
+				margin:0 0 80px 280px;
+				width:408px;
+				height:131px;
+			}
+			.pay .warptable tr td:first-child{
+				width:110px;
+				font-size:14px;
+				text-align:right;
+				padding-right:20px;
+			}
+			.pay .warptable tr td label{
+				margin-right:14px;
+			}
+			.pay .accept{
+				width:98px;
+				height:28px;
+				line-height:28px;
+				text-align:center;
+				display:inline-block;
+				position:absolute;
+				left:50%;
+				bottom:20px;
+				margin-left:-49px;
+				color:#fff;
+				background:#56a9f7;
+				border-radius:3px;
+				border:1px solid #1a7ff5;
+			}
+		</style>
+		<div class="group_finance_recharge">
+			<div class="group_box">
+				<p class="group_title">充值中心</p>
+				<div class="recharge_con">
+					<div class="msg">
+						<p class="recharge_title">
+							<img src="../images/printIcon.png"/>对公账号打款
+						</p>
+						<table>
+							<tr>
+								<td>银行开户名：</td>
+								<td>xxx</td>
+							</tr>
+							<tr>
+								<td>开户银行：</td>
+								<td>中国银行</td>
+							</tr>
+							<tr>
+								<td>银行对公账号：</td>
+								<td>0000 0000 0000 000</td>
+							</tr>
+							<tr>
+								<td>联系人：</td>
+								<td>我</td>
+							</tr>
+							<tr>
+								<td>手机号：</td>
+								<td>11111111111</td>
+							</tr>
+						</table>
+					</div>
+					
+					<div class="pay">
+						<p class="recharge_title">
+							<img src="../images/quickIcon.png"/>快捷支付
+						</p>
+						<table class="warptable">
+							<tr>
+								<td>充值金额(元)：</td>
+								<td>
+									<input type="radio" name="money" id="one" checked="checked"/><label for="one">￥10,000</label>
+									<input type="radio" name="money" id="two"/><label for="two">￥20,000</label>
+									<input type="radio" name="money" id="three"/><label for="three">￥30,000</label>
+									<input type="radio" name="money" id="four"/><label for="four">￥40,000</label>
+									<input type="radio" name="money" id="five"/><label for="five">￥50,000</label>
+								</td>
+							</tr>
+							<tr>
+								<td>选择支付方式：</td>
+								<td>
+									<input type="radio" name="pay" id="wechat" checked="checked"/><label for="wechat">微信</label>
+									<input type="radio" name="pay" id="apa"/><label for="apa">支付宝</label>
+								</td>
+							</tr>
+						</table>
+						<a class="accept" href="javascript:;">确认充值</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script type="text/javascript">
+			
+		</script>
+	</div>
+</body>
+</html>

@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="../styles/reset.css">
+	<link rel="stylesheet" href="../styles/global.css">
+	<script src="../scripts/echarts.js"></script>
+</head>
+<body>
+	<div id="article" style="position:relative;">
+		<style type="text/css">
+			/*公共样式*/
+			.group_first{
+				width:976px;
+				padding:9px 9px 135px 15px;
+			}
+			.group_first .first_box .first_title{
+				margin-bottom:20px;
+				border-bottom:1px solid #ddd;
+				font-size:16px;
+				height:58px;
+				line-height:58px;
+			}
+			/*业绩统计样式*/
+			.performance_statistics .statis{
+				width:968px;
+				height:254px;
+				border-radius:3px;
+				border:1px solid #ddd;
+			}
+			/*学员分析样式*/
+			.students_analysis{
+				position:relative;
+			}
+			.students_analysis .analys{
+				width:976px;
+				height:417px;
+				border-radius:3px;
+				border:1px solid #ddd;
+			}
+			.students_analysis .week{
+				position:absolute;
+				right:21%;
+				top:90px;
+				width:45px;
+				height:26px;
+				line-height:26px;
+				text-align:center;
+				border-radius:3px;
+				cursor:pointer;
+			}
+			.students_analysis .month{
+				position:absolute;
+				right:14%;
+				top:90px;
+				width:45px;
+				height:26px;
+				line-height:26px;
+				text-align:center;
+				border-radius:3px;
+				cursor:pointer;
+			}
+			.students_analysis .year{
+				position:absolute;
+				right:7%;
+				top:90px;
+				width:45px;
+				height:26px;
+				line-height:26px;
+				text-align:center;
+				border-radius:3px;
+				cursor:pointer;
+			}
+			.students_analysis .active{
+				border:1px solid #1b7ef4;
+				background:#56a9f6;
+				color:#fff;
+			}
+			/*业务记录样式*/
+			.service_record .record{
+				width:968px;
+				height:664px;
+			}
+			.service_record .record .tag{
+				margin-left:55px;
+				margin-bottom:25px;
+				overflow: hidden;
+			}
+			.service_record .record .tag a{
+				text-decoration:none;
+				display:inline-block;
+				margin-right:6px;
+				text-align:center;
+				width:137px;
+				height:28px;
+				border-radius:3px;
+				border:1px solid #ddd;
+				background:#fff;
+				font-size:12px;
+				line-height:28px;
+				cursor:pointer;
+			}
+			.service_record .record .tag .active{
+				width:137px;
+				height:28px;
+				border:1px solid #56a9f6;
+				background:#56a9f6;
+				color:#fff;
+			}
+			.service_record .record .tab1{
+				width:968px;
+				height:610px;
+				border-radius:3px;
+				border:1px solid #ddd;
+				position:relative;
+			}
+			.service_record .record .tab1 .tab1bg{
+				height:40px;
+				background:#eee;
+				line-height:40px;
+			}
+			.service_record .record .tab1 .tab1bg .agree_all{
+				color:#56a9f6;
+				font-size:14px;
+				text-decoration:none;
+				margin:0 24px 0 97px;
+			}
+			.service_record .record .tab1 .tab1bg .disagree_all{
+				color:#f23300;
+				font-size:14px;
+				text-decoration:none;
+			}
+			.service_record .record .tab1 table{
+				width:946px;
+				margin-top:11px;
+				border:1px solid #ddd;
+				margin: 20px 0 62px 10px;
+				border-collapse:collapse;
+			}
+			.service_record .record .tab1 table thead{
+				font-size:14px;
+				font-weight:bolder;
+				color:#000;
+			}
+			.service_record .record .tab1 table tbody tr:nth-child(odd){
+				background:#f9f9f9;
+			}
+			.service_record .record .tab1 table th{
+				height:48px;
+				text-align:center;
+				border-bottom:1px solid #ddd;
+				font-weight:bolder;
+			}
+			.service_record .record .tab1 table td{
+				height:44px;
+				text-align:center;
+				border-bottom:1px solid #ddd;
+				color:#333;
+				font-size:14px;
+			}
+			.service_record .record .tab1 .page_turn{
+				position:absolute;
+				bottom:8px;
+				right:20px;
+			}
+			.service_record .record .tab1 .page_turn .prev{
+				font-size:12px;
+				color:#ccc;
+				text-decoration:none;
+			}
+			.service_record .record .tab1 .page_turn .total{
+				font-size:12px;
+				color:#333;
+				margin:0 16px 0 16px;
+			}
+			.service_record .record .tab1 .page_turn .next{
+				font-size:12px;
+				color:#549ef7;
+				text-decoration:none;
+			}
+		</style>
+		<div class="group_first">
+			<!--第一区块开始-->
+			<div class="first_box performance_statistics">
+				<p class="first_title">业绩统计</p>
+				<div class="statis"></div>
+			</div>
+			<!--第一区块结束-->
+			<!--第二区块开始-->
+			<div class="first_box students_analysis">
+				<p class="first_title">学员分析</p>
+				<div class="analys" id="analys"></div>
+				<div class="week" id="chartWeek">周</div>
+				<div class="month" id="chartMonth">月</div>
+				<div class="year active" id="chartYear">年</div>
+			</div>
+			<!--第二区块结束-->
+			<!--第三区块开始-->
+			<div class="first_box service_record">
+				<p class="first_title">业务记录</p>
+				<div class="record">
+					<div class="tag">
+						<a href="javascript:;">待办事务</a>
+						<a href="javascript:;">审批记录</a>
+						<a href="javascript:;" class="active">充值记录</a>
+					</div>
+					<div class="tab1">
+						<table>
+							<thead>
+								<tr>
+									<th>充值金额</th>
+									<th>充值人</th>
+									<th>充值时间</th>
+									<th>支付方式</th>
+								</tr>	
+							</thead>
+							<tbody>
+								<tr>
+									<td>100</td>
+									<td>贪狼</td>
+									<td>2016-03-01 11:01</td>
+									<td>支付宝</td>
+								</tr>
+								<tr>
+									<td>100</td>
+									<td>贪狼</td>
+									<td>2016-03-01 11:01</td>
+									<td>支付宝</td>
+								</tr>
+								<tr>
+									<td>100</td>
+									<td>贪狼</td>
+									<td>2016-03-01 11:01</td>
+									<td>支付宝</td>
+								</tr>
+								<tr>
+									<td>100</td>
+									<td>贪狼</td>
+									<td>2016-03-01 11:01</td>
+									<td>支付宝</td>
+								</tr>
+								<tr>
+									<td>100</td>
+									<td>贪狼</td>
+									<td>2016-03-01 11:01</td>
+									<td>支付宝</td>
+								</tr>
+								<tr>
+									<td>100</td>
+									<td>贪狼</td>
+									<td>2016-03-01 11:01</td>
+									<td>支付宝</td>
+								</tr>
+								<tr>
+									<td>100</td>
+									<td>贪狼</td>
+									<td>2016-03-01 11:01</td>
+									<td>支付宝</td>
+								</tr>
+								<tr>
+									<td>100</td>
+									<td>贪狼</td>
+									<td>2016-03-01 11:01</td>
+									<td>支付宝</td>
+								</tr>
+								<tr>
+									<td>100</td>
+									<td>贪狼</td>
+									<td>2016-03-01 11:01</td>
+									<td>支付宝</td>
+								</tr>
+								<tr>
+									<td>100</td>
+									<td>贪狼</td>
+									<td>2016-03-01 11:01</td>
+									<td>支付宝</td>
+								</tr>
+							</tbody>
+						</table>
+						<div class="page_turn">
+							<a href="javascript:;" class="prev">&lt;上一页</a><span class="total">1-10条，共20条</span><a href="javascript:;" class="next">下一页&gt;</a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!--第三区块结束-->
+		</div>
+		<script type="text/javascript">
+			var jsonWeek = {
+				"time":"2016年6月",
+				"data":['6.01','6.02','6.03','6.04','6.05','6.06','6.07'],
+				"new":[59,133,141,17,46,216,198],
+				"course":[128,101,171,19,154,157,111]
+			}
+			var jsonMonth = {
+				"time":"2016年6月",
+				"data":[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25],
+				"new":[123,167,15,121,42,190,55,194,166,196,102,41,210,233,193,149,5,167,131,137,111,195,110,233,119],
+				"course":[196,91,190,105,173,44,128,231,227,47,6,195,73,157,200,99,33,85,224,230,207,228,193,192,91]
+			}
+			var jsonYear = {
+				"time":"2016年",
+				"data":["一月","二月","三月","四月","五月","六月","七月","八月","九月","十月","十一月","十二月"],
+				"new":[140,242,153,122,105,219,47,156,179,20,185,236],
+				"course":[11,231,77,130,164,211,232,43,154,27,180,166]
+			}
+			echart('analys',jsonYear);
+			function echart(id,json){
+				var myChart = echarts.init(document.getElementById(id));
+
+				var option = {
+					title:{
+						text:json.time,
+						textStyle:{
+							fontStyle:'normal',
+							fontWeight:'normal',
+							fontSize:16
+						},
+						right:260,
+						bottom:18
+					},
+					legend:{
+						itemWidth:25,
+						data:[
+						{
+							name:'新增学员数',
+							icon:'rect',
+							textStyle:{
+								color:'#000'
+							}
+						},
+						{
+							name:'学员约课数', 
+							icon:'rect',
+						}],
+						bottom:20,
+						right:40
+					},
+					grid: {
+						left: '5%',
+				        right: '5%',
+				        bottom: '20%',
+				        containLabel: true
+					},
+				    xAxis: {
+				        type: 'category',
+				        splitLine:{
+				        	show:true,
+				        	lineStyle:{
+				        		type:'dashed'
+				        	}
+				        },
+				        boundaryGap:false,
+				        data: json.data
+				    },
+				    yAxis: {
+				    	min:0,
+				    	max:250,
+				    	splitLine:{
+				        	show:true,
+				        	lineStyle:{
+				        		type:'dashed'
+				        	}
+				        },
+				    	axisLine:{
+				    		show:false
+				    	},
+				    	axisTick:{
+				    		show:false
+				    	},
+				        type: 'value'
+				    },
+				    series: [
+				        {
+				            name:'新增学员数',
+				            type:'line',
+				            symbol:'circle',
+				            symbolSize:'10',
+				            itemStyle : {
+				            	normal: {
+				            		label : {
+	//			            			show: true,
+				            			textStyle:{
+				            				color:'#000'
+				            			}
+				            		}
+				            	}
+				            },
+				            data:json.new
+				        },
+				        {
+				            name:'学员约课数',
+				            type:'line',
+				            symbol:'circle',
+				            symbolSize:'10',
+				            itemStyle : {
+				            	normal: {
+				            		label : {
+	//			            			show: true,
+				            			position:[-6,14],
+				            			textStyle:{
+				            				color:'#000'
+				            			}
+				            		}
+				            	}
+				            },
+				            data:json.course
+				        }
+				    ],
+				    color:['#f2af00','#5aacf6']
+				};
+				myChart.setOption(option);
+			}	
+			
+			var oChartWeek = document.getElementById('chartWeek');
+			var oChartMonth = document.getElementById('chartMonth');
+			var oChartYear = document.getElementById('chartYear');
+			oChartWeek.onclick = function(){
+				oChartWeek.className = 'week active';
+				oChartMonth.className = 'month';
+				oChartYear.className = 'year';
+				echart('analys',jsonWeek);
+			};
+			oChartMonth.onclick = function(){
+				oChartWeek.className = 'week';
+				oChartMonth.className = 'month active';
+				oChartYear.className = 'year';
+				echart('analys',jsonMonth);
+			};
+			oChartYear.onclick = function(){
+				oChartWeek.className = 'week';
+				oChartMonth.className = 'month';
+				oChartYear.className = 'year active';
+				echart('analys',jsonYear);
+			};
+		</script>
+	</div>
+</body>
+</html>

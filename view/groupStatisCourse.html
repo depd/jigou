@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="../styles/reset.css">
+	<link rel="stylesheet" href="../styles/global.css">
+</head>
+<body>
+	<div id="article" style="position:relative;">
+		<style type="text/css">
+			/*公共样式*/
+			.group_statis_course{
+				width:976px;
+				padding:9px 9px 135px 15px;
+			}
+			.group_statis_course .group_box .group_title{
+				margin-bottom:20px;
+				border-bottom:1px solid #ddd;
+				font-size:16px;
+				height:58px;
+				line-height:58px;
+			}
+			.group_statis_course .group_box .course_con .head{
+				height:40px;
+				line-height:40px;
+				font-size:14px;
+				background:#eee;
+			}
+			/*图表区域样式*/
+			.group_statis_course .course_con .course_chart{
+				width:966px;
+				height:408px;
+				border-radius:3px;
+				overflow:hidden;
+				margin-bottom:30px;
+				border:1px solid #ddd;
+			}
+			.group_statis_course .course_con .course_chart .chart{
+				border:1px solid red;
+				height:358px;
+			}
+			.group_statis_course .group_box .course_con .head span{
+				display:inline-block;
+				margin-left:21px;
+				line-height:40px;
+				height:40px;
+				font-size:14px;
+			}
+			.group_statis_course .course_chart .head input{
+				width:140px;
+				height:28px;
+			}
+			.group_statis_course .course_chart .head a{
+				color:#000;
+				text-decoration:none;
+				text-align:center;
+				display:inline-block;
+				width:47px;
+				height:28px;
+				line-height:28px;
+				vertical-align: middle;
+			}
+			.group_statis_course .course_chart .head .active{
+				color:#fff;
+				background:#56a9f6;
+				width:47px;
+				height:28px;
+				border:1px solid #1b7ef4;
+				border-radius: 3px;
+			}
+			/*表格区域样式*/
+			.group_statis_course .course_con .course_table{
+				border-radius:3px;
+				width:966px;
+				border:1px solid #ddd;
+				margin-bottom:26px;
+				position:relative;
+			}
+			.group_statis_course .course_table .head span{
+				display:inline-block;
+				margin-left:21px;
+				line-height:40px;
+				height:40px;
+				font-size:14px;
+			}
+			.group_statis_course .course_table .table1{
+				margin:20px 10px 50px 10px;
+				border:1px solid #ddd;
+				width:946px;
+			}
+			.group_statis_course .course_table .table1 tr:nth-child(even) td{
+				background:#eee;
+			}
+			.group_statis_course .course_table .table1 th{
+				border-bottom:1px solid #ddd;
+				height:47px;
+				text-align:center;
+				font-weight:bolder;
+			}
+			.group_statis_course .course_table .table1 td{
+				border-bottom:1px solid #ddd;
+				height:42px;
+				text-align:center;
+			}
+			.group_statis_course .course_table .page_turn{
+				position:absolute;
+				bottom:8px;
+				right:20px;
+			}
+			.group_statis_course .course_table .page_turn .prev{
+				font-size:12px;
+				color:#ccc;
+				text-decoration:none;
+			}
+			.group_statis_course .course_table .page_turn .total{
+				font-size:12px;
+				color:#333;
+				margin:0 16px 0 16px;
+			}
+			.group_statis_course .course_table .page_turn .next{
+				font-size:12px;
+				color:#549ef7;
+				text-decoration:none;
+			}
+		</style>
+		<div class="group_statis_course">
+			<div class="group_box">
+				<p class="group_title">课程统计</p>
+				<div class="course_con">
+					<!--图表区域开始(一块)-->
+					<div class="course_chart">
+						<div class="head">
+							<span>起始时间</span>
+							<input type="date" />
+							<span>截止时间</span>
+							<input type="date" />
+							<a class="active" href="javascript:;">周</a>
+							<a href="javascript:;">月</a>
+							<a href="javascript:;">年</a>
+						</div>
+						<div class="chart"></div>
+					</div>
+					<!--图表区域结束(一块)-->
+					<!--表格区域开始(一块)-->
+					<div class="course_table">
+						<div class="head">
+							<span>课程记录</span>
+						</div>
+						<table class="table1">
+							<thead>
+								<tr>
+									<th>课程名称</th>
+									<th>课程上课占比(%)</th>
+									<th>开课学员数(人)</th>
+									<th>上课学员数(人)</th>
+									<th>平均课耗(节)</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>英语自由约课</td>
+									<td>95.5</td>
+									<td>200</td>
+									<td>200</td>
+									<td>10</td>
+								</tr>
+								<tr>
+									<td>英语自由约课</td>
+									<td>95.5</td>
+									<td>200</td>
+									<td>200</td>
+									<td>10</td>
+								</tr>
+							</tbody>
+						</table>
+						<div class="page_turn">
+							<a href="javascript:;" class="prev">&lt;上一页</a><span class="total">1-10条，共20条</span><a href="javascript:;" class="next">下一页&gt;</a>
+						</div>
+					</div>
+					<!--表格区域结束(一块)-->
+				</div>
+			</div>
+		</div>
+		<script type="text/javascript">
+			
+		</script>
+	</div>
+</body>
+</html>
